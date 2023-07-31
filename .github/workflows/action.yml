@@ -13,4 +13,4 @@ jobs:
         id: get_branch
       - name: Check PR
         if: success() && steps.find-pr.outputs.pr
-        run: echo ${{ steps.get_branch.outputs.branch }}
+        run: echo ${{ steps.get_branch.outputs.branch }} ${{ github.event.repository.full_name }} ${{ github.event.sender.login }}
