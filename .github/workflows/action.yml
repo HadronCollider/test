@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
       - name: get branch
         run: |
           echo $GITHUB_HEAD_REF >> $GITHUB_OUTPUT
