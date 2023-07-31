@@ -9,4 +9,8 @@ jobs:
     steps:
       - name: get branch
         run: |
-          echo $GITHUB_HEAD_REF
+          echo $GITHUB_HEAD_REF >> $GITHUB_OUTPUT
+        id: get_branch
+      - name: Check PR
+        if: success() && steps.find-pr.outputs.pr
+        run: echo ${{ steps.get_branch.outputs.branch }}
