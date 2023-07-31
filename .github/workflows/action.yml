@@ -10,8 +10,7 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
       - name: get branch
-        run: |
-          echo $GITHUB_HEAD_REF >> $GITHUB_OUTPUT
+        run: echo "$GITHUB_HEAD_REF" >> $GITHUB_OUTPUT
         id: get_branch
       - name: Check PR
         if: success() && steps.find-pr.outputs.pr
