@@ -7,11 +7,9 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Git checkout
-        uses: actions/checkout@v2
       - name: Get branch name
         id: branch-name
         uses: tj-actions/branch-names@v7
       - name: Check PR
-        if: success() && steps.find-pr.outputs.pr
+        if: success() && steps.branch-name.outputs.current_branch
         run: echo ${{ steps.branch-name.outputs.current_branch }} ${{ github.event.repository.full_name }} ${{ github.event.sender.login }}
